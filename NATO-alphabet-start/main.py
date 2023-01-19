@@ -24,14 +24,20 @@ for (index, row) in student_data_frame.iterrows():
 #{"A": "Alfa", "B": "Bravo"}
 alphabet_df = pandas.read_csv("nato_phonetic_alphabet.csv")
 
-alphabet_dict = {row.letter : row.code for (index, row) in alphabet_df.iterrows()}
+alphabet_dict = {row.letter: row.code for (index, row) in alphabet_df.iterrows()}
 
 
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("Enter a word to apply the NATO alphabet on: ")
+word = input("Enter a word to apply the NATO alphabet on: ").upper()
 
-new_list = [value for (key, value) in alphabet_dict.items() if key in word]
+new_list = [alphabet_dict[letter] for letter in word]
 
 print(new_list)
+
+new_dict = {word[pos]: new_list[pos] for pos in range(len(word))}
+
+print(new_dict)
+
+
 
